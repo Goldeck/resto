@@ -1,3 +1,5 @@
 McDo,0999999999,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mcdonalds-90s-logo.svg/220px-Mcdonalds-90s-logo.svg.png
 Quick,06550500505,http://www.fastandfood.fr/wp-content/uploads/2015/01/quick_logo.png
-Burgerking,046546465654,https://sundevildining.asu.edu/sites/default/files/styles/panopoly_image_original/public/burgerking-logo_large_description.jpg
+Burgerking,046546465654,https://sundevildining.asu.edu/sites/default/files/styles/panopoly_image_original/public/burgerking-logo_large_description.jpgkebab,061561561,keeeebab,
+kebab,061561561,keeeebab,
+Flunch,0154545454,https://upload.wikimedia.org/wikipedia/commons/f/f1/Logo_Restaurant_Flunch.jpg,

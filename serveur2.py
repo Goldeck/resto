@@ -27,12 +27,11 @@ def verifi(nomr):
 	listnom=verifresto(readfile)
 	
 	if nomr in listnom:
-		with open("Donnees/"+nomr+".txt","r") as file:
-			meunu=str(file.readlines())
+		
 
 
 		formulaire =  '''
-	<form method="POST" action="/formulaire">
+	<form method="POST" action="/'''+nomr+'''">
 	<p>Vos plats</p>
 	<p>
 	<label for="plat">Votre plat :</label>
@@ -53,6 +52,11 @@ def verifi(nomr):
 	<input type="submit" value="Envoyer" />
 	</form>
 	'''
+
+		with open("Donnees/"+nomr+".txt","r") as file:
+			meunu=str(file.readlines())
+
+
 		return meunu+formulaire
 	else:
 		return "le resto n'existe pas"
@@ -60,7 +64,22 @@ def verifi(nomr):
 
 @app.route("/<name>")
 def meunuresto(name):
+
+
+	# plat =  str(request.form['plat'])
+	# description =  str(request.form['description'])
+	# prix =  str(request.form['prix'])
+	# photo =  str(request.form['photo'])
+
+	# with open("Donnees/"+name+".txt","a") as file:
+	# 	file.write(plat+ "," +description+","+prix+","+ photo+",\n")
 	return verifi(name)
+
+
+# @app.route("/<name>", methods=['GET'])
+# def meunuresto(name):
+
+# 	return verifi(name)
 
 # @app.route("/<name>")
 # def meunuresto(name):
@@ -137,7 +156,6 @@ def monindex():
 @app.route("/resto", methods=['POST'])
 def nouvellepage():
 	import random
-	image = "<p> <img src='images/montagne.jpg' alt='Photo de montagne' /> </p>" 
 	formulaire =  '''
 	rafréchisser la page pour verifier que le resto a bien ete enregistrer
 	'''
@@ -146,6 +164,8 @@ def nouvellepage():
 	nom =  str(request.form['nom'])
 	num =  str(request.form['num'])
 	photo =  str(request.form['photo'])
+
+	open("Donnees/"+nom+".txt", "a")
 
 	with open("resto.txt","a") as file:
 		file.write(nom+ "," +num+","+ photo+",\n")
