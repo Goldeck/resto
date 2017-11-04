@@ -62,24 +62,24 @@ def verifi(nomr):
 		return "le resto n'existe pas"
 
 
-@app.route("/<name>")
+@app.route("/<name>", methods=['POST'])
 def meunuresto(name):
 
 
-	# plat =  str(request.form['plat'])
-	# description =  str(request.form['description'])
-	# prix =  str(request.form['prix'])
-	# photo =  str(request.form['photo'])
+	plat =  str(request.form['plat'])
+	description =  str(request.form['description'])
+	prix =  str(request.form['prix'])
+	photo =  str(request.form['photo'])
 
-	# with open("Donnees/"+name+".txt","a") as file:
-	# 	file.write(plat+ "," +description+","+prix+","+ photo+",\n")
+	with open("Donnees/"+name+".txt","a") as file:
+		file.write(plat+ "," +description+","+prix+","+ photo+",\n")
 	return verifi(name)
 
 
-# @app.route("/<name>", methods=['GET'])
-# def meunuresto(name):
+@app.route("/<name>", methods=['GET'])
+def meunuresto2(name):
 
-# 	return verifi(name)
+	return verifi(name)
 
 # @app.route("/<name>")
 # def meunuresto(name):
