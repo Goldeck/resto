@@ -1,4 +1,12 @@
 McDo,0999999999,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mcdonalds-90s-logo.svg/220px-Mcdonalds-90s-logo.svg.png
 Quick,06550500505,http://www.fastandfood.fr/wp-content/uploads/2015/01/quick_logo.png
-Burgerking,046546465654,https://sundevildining.asu.edu/sites/default/files/styles/panopoly_image_original/public/burgerking-logo_large_description.jpgkebab,061561561,keeeebab,
+Burgerking,046546465654,https://sundevildining.asu.edu/sites/default/files/styles/panopoly_image_original/public/burgerking-logo_large_description.jpg
 Flunch,0154545454,https://upload.wikimedia.org/wikipedia/commons/f/f1/Logo_Restaurant_Flunch.jpg,
+kebab,06595959,http://lecritiqueur.fr/wp-content/uploads/2015/11/grec.jpg,
+Pizzahut,0142424242,https://www.dealsshutter.com/blog/wp-content/uploads/2017/09/pizza-hut.jpg,
+dominos,0550505050,https://pbs.twimg.com/profile_images/590131813059850240/GMUUGCGW.jpg,
+dominos2,06060606,https://pbs.twimg.com/profile_images/590131813059850240/GMUUGCGW.jpg,
+dominos3,04040404,https://pbs.twimg.com/profile_images/590131813059850240/GMUUGCGW.jpg,
+dominos4,01424242424,https://pbs.twimg.com/profile_images/590131813059850240/GMUUGCGW.jpg,
+dominos5,068787878787,https://pbs.twimg.com/profile_images/590131813059850240/GMUUGCGW.jpg,
+dominos6,0452574216,https://pbs.twimg.com/profile_images/590131813059850240/GMUUGCGW.jpg,
