@@ -17,11 +17,14 @@ def recupinforesto(line):
 
 def recupinfoplat(line):
 	listeelem=line.strip().split(",")
-	nomplat=listeelem[0]
-	description=listeelem[1]
-	prix=listeelem[2]
-	lienimage=listeelem[3]
-	return affichageplat(nomplat,description,prix,lienimage)
+
+	plat ={
+		"nomplat" : listeelem[0],
+		"description" : listeelem[1],
+		"prix" : listeelem[2],
+		"lienimage" : listeelem[3]
+	}
+	return plat
 
 
 def affichageresto(nom,num,photo):
@@ -34,14 +37,7 @@ def affichageresto(nom,num,photo):
 
 	return monblock
 
-def affichageplat(nomplat,description,prix,lienimage):
-	affichageplat='''<div>
-        <p>le nom du plat : %s</a> </p>
-        <p>le desciption du plat : %s</p>
-        <p>le prix du plat : %s</p>
-        <img src="%s ">
-    </div>'''% (nomplat,description,prix,lienimage)
-	return affichageplat
+
 
 def combinemesboucles(readfile):
 	boutcoller=""
@@ -52,11 +48,12 @@ def combinemesboucles(readfile):
 
 
 def combinemesbouclesplat(readfile):
-	boutcoller=""
+	plats=[]
 	for line in readfile:
-		boutdecode=recupinfoplat(line)
-		boutcoller+=boutdecode
-	return boutcoller
+		plat=recupinfoplat(line)		
+		plats.append(plat)
+
+	return plats
 
 
 def get_resto_list(readfile):
@@ -69,35 +66,23 @@ def get_resto_list(readfile):
 	return listnom
 
 
-def get_resto_html(nomr):
+def restaurant_existe(nomr):
 	with open("resto.txt","r") as file:
 		readfile=file.readlines()
 
 	listnom=get_resto_list(readfile)
-	app.logger.info(listnom)
-	if nomr in listnom:
-		dependances = {
-			"menu" : {
-				"versios" : [1.1,2.1],
 
-			}
-		}
+	return nomr in listnom
+	# la même chose
+	# if nomr in listnom:
+	# 	return True
+	# else:
+	# 	return False
 
-
-		with open("Donnees/"+nomr+".txt","r") as file:
-			menu=str(file.readlines())
-
-
-
-
-
-		# affichageplat=affichageplat(nomplat,description,prix,lienimage)
-
-		page=render_template("restaurant.html",listeplat=menu , resto=nomr)
-
-		return page
-	else:
-		return "le resto n'existe pas"
+def get_food_lines(name):
+	with open("Donnees/"+name+".txt","r") as file:
+		readfile=file.readlines()
+	return readfile		
 
 
 @app.route("/<name>", methods=['POST'])
@@ -111,24 +96,25 @@ def meunuresto(name):
 
 	with open("Donnees/"+name+".txt","a") as file:
 		file.write(plat+ "," +description+","+prix+","+ photo+",\n")
-	return get_resto_html(name)
+	return redirect("/" + name )
+
+
 
 
 @app.route("/<name>", methods=['GET'])
-def meunuresto2(name):
+def meunuresto2(name):	
+	if restaurant_existe(name):
+		
+		readfile=get_food_lines(name)
 
-	with open("Donnees/"+name+".txt","r") as file:
-		readfile=file.readlines()
+		plats=combinemesbouclesplat(readfile)
+
+		page= render_template("restaurant.html",plats=plats,resto=name)
+		return page
+	else :
+		return "aucun restaurant de ce nom"
 
 
-
-
-	platresto=combinemesbouclesplat(readfile)
-
-	formulaire = render_template("formulaire_resto.html")
-
-
-	return platresto+get_resto_html(name)
 
 
 @app.route("/resto", methods=['POST'])
@@ -144,6 +130,8 @@ def nouvellepage():
 		file.write(nom+ "," +num+","+ photo+",\n")
 
 	return redirect("/resto")
+
+
 
 
 @app.route("/resto", methods=['GET'])
